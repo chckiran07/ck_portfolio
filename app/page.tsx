@@ -998,20 +998,27 @@ useEffect(() => {
 
             {/* HERO TEXT */}
 
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              animate="visible"
-              className="
-                w-full max-w-[320px]
-                -translate-y-3
-                min-[600px]:max-w-[380px]
-                min-[750px]:max-w-[420px]
-                sm:max-w-[460px] sm:-translate-y-4
-                md:max-w-[500px] md:-translate-y-6
-                lg:col-span-6 lg:max-w-[720px] lg:-translate-y-12
-              "
-            >
+           <motion.div
+  variants={stagger}
+  initial="hidden"
+  animate="visible"
+  className="
+    w-full max-w-[320px]
+
+    translate-y-10
+
+    min-[400px]:translate-y-8
+    min-[600px]:max-w-[380px] min-[600px]:translate-y-6
+    min-[750px]:max-w-[420px]
+
+    sm:max-w-[460px] sm:translate-y-2
+    md:max-w-[500px] md:translate-y-0
+
+    lg:col-span-6
+    lg:max-w-[720px]
+    lg:-translate-y-12
+  "
+>
               
               <motion.h1
                 variants={childReveal}
@@ -1156,7 +1163,7 @@ useEffect(() => {
   {/* GitHub */}
 
   <a
-    href="https://github.com/Chckiran01"
+    href="https://github.com/chckiran07"
     target="_blank"
     rel="noreferrer"
     aria-label="GitHub"
@@ -3388,91 +3395,113 @@ useEffect(() => {
 
 
                 <div
-                  className="
-                    flex
-                    items-center
-                    gap-1.5
-                    text-[10px]
-                    font-black
-                    text-stone-400
-                  "
-                >
+  className="
+    flex
+    shrink-0
+    items-center
+    gap-1
+    whitespace-nowrap
+    text-[11px]
+    font-black
+    leading-none
+    text-stone-400
+    sm:text-xs
+  "
+>
+  <span
+    className="
+      inline-block
+      leading-none
+      text-orange-400
+    "
+  >
+    {String(activeProject + 1).padStart(2, "0")}
+  </span>
 
-                  <span className="text-orange-400">
-                    {String(activeProject + 1).padStart(2, "0")}
-                  </span>
+  <span
+    className="
+      inline-block
+      leading-none
+      text-stone-500
+    "
+  >
+    /
+  </span>
 
-                  <span>
-                    / {String(projects.length).padStart(2, "0")}
-                  </span>
+  <span
+    className="
+      inline-block
+      leading-none
+      text-stone-400
+    "
+  >
+    {String(projects.length).padStart(2, "0")}
+  </span>
 
+  {/* PREVIOUS */}
+  <button
+    type="button"
+    onClick={() =>
+      setActiveProject(
+        (activeProject - 1 + projects.length) %
+          projects.length
+      )
+    }
+    className="
+      ml-1
+      flex
+      h-8
+      w-8
+      shrink-0
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-orange-500/40
+      bg-black/40
+      text-orange-300
+      transition-all
+      duration-300
+      hover:border-orange-500
+      hover:bg-orange-500
+      hover:text-white
+    "
+    aria-label="Previous project"
+  >
+    ←
+  </button>
 
-                  {/* PREVIOUS */}
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveProject(
-                        (activeProject - 1 + projects.length) %
-                          projects.length
-                      )
-                    }
-                    className="
-                      ml-1.5
-                      flex
-                      h-8
-                      w-8
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-orange-500/40
-                      bg-black/40
-                      text-orange-300
-                      transition-all
-                      duration-300
-                      hover:border-orange-500
-                      hover:bg-orange-500
-                      hover:text-white
-                    "
-                    aria-label="Previous project"
-                  >
-                    ←
-                  </button>
-
-
-                  {/* NEXT */}
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveProject(
-                        (activeProject + 1) % projects.length
-                      )
-                    }
-                    className="
-                      flex
-                      h-8
-                      w-8
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-orange-500/40
-                      bg-black/40
-                      text-orange-300
-                      transition-all
-                      duration-300
-                      hover:border-orange-500
-                      hover:bg-orange-500
-                      hover:text-white
-                    "
-                    aria-label="Next project"
-                  >
-                    →
-                  </button>
-
-                </div>
+  {/* NEXT */}
+  <button
+    type="button"
+    onClick={() =>
+      setActiveProject(
+        (activeProject + 1) % projects.length
+      )
+    }
+    className="
+      flex
+      h-8
+      w-8
+      shrink-0
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-orange-500/40
+      bg-black/40
+      text-orange-300
+      transition-all
+      duration-300
+      hover:border-orange-500
+      hover:bg-orange-500
+      hover:text-white
+    "
+    aria-label="Next project"
+  >
+    →
+  </button>
+</div>
 
               </div>
 
@@ -4747,12 +4776,18 @@ useEffect(() => {
     CONTACT — EMAILJS CONTACT SECTION
 ===================================================== */}
 
+{/* =====================================================
+    CONTACT — EMAILJS CONTACT SECTION
+===================================================== */}
+
 <Section
   id="contact"
   className="
     relative
     w-full
-    overflow-hidden
+    max-w-full
+    overflow-x-hidden
+    overflow-y-visible
     border-t
     border-orange-500/10
     bg-[#0D0A08]
@@ -4766,7 +4801,6 @@ useEffect(() => {
   <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
     {/* Left glow */}
-
     <div
       className="
         absolute
@@ -4781,7 +4815,6 @@ useEffect(() => {
     />
 
     {/* Right glow */}
-
     <div
       className="
         absolute
@@ -4796,7 +4829,6 @@ useEffect(() => {
     />
 
     {/* Grid */}
-
     <div
       className="
         absolute
@@ -4811,7 +4843,6 @@ useEffect(() => {
     />
 
     {/* Decorative circles */}
-
     <div
       className="
         absolute
@@ -4839,7 +4870,6 @@ useEffect(() => {
     />
 
     {/* Decorative dots */}
-
     <div
       className="
         absolute
@@ -4871,34 +4901,39 @@ useEffect(() => {
       MAIN CONTAINER
   =================================================== */}
 
- <div
-  className="
-    relative
-    z-10
-    mx-auto
-    w-full
-    max-w-[1500px]
-    px-5
-    pt-0
-   
+  <div
+    className="
+      relative
+      z-10
+      mx-auto
+      w-full
+      max-w-[1500px]
+      min-w-0
+      overflow-hidden
 
-    sm:px-8
-    sm:pt-0
-    sm:pb-12
+      px-4
 
-    md:px-10
-    md:pt-0
-    md:pb-14
+      pt-16
+      pb-10
 
-    lg:px-14
-    lg:pt-0
-    lg:pb-16
+      min-[400px]:px-5
 
-    xl:px-20
-    xl:pt-0
-  "
->
-  
+      sm:px-8
+      sm:pt-16
+      sm:pb-12
+
+      md:px-10
+      md:pt-20
+      md:pb-14
+
+      lg:px-14
+      lg:pt-24
+      lg:pb-16
+
+      xl:px-20
+      xl:pt-24
+    "
+  >
 
     {/* =================================================
         HEADER
@@ -4908,7 +4943,9 @@ useEffect(() => {
       variants={stagger}
       className="
         mx-auto
+        w-full
         max-w-5xl
+        min-w-0
         text-center
       "
     >
@@ -4934,14 +4971,15 @@ useEffect(() => {
           uppercase
           tracking-[0.3em]
           text-orange-400
+
           sm:text-lg
         "
       >
-
         <span
           className="
             h-2
             w-2
+            shrink-0
             rounded-full
             bg-orange-500
             shadow-[0_0_12px_rgba(249,115,22,0.9)]
@@ -4958,19 +4996,19 @@ useEffect(() => {
       <motion.h2
         variants={childReveal}
         className="
-  text-3xl
-  font-black
-  leading-[0.98]
-  tracking-[-0.04em]
-  text-white
+          px-2
+          text-3xl
+          font-black
+          leading-[0.98]
+          tracking-[-0.04em]
+          text-white
 
-  sm:text-4xl
-  md:text-5xl
-  lg:text-6xl
-  xl:text-[4rem]
-"
+          sm:text-4xl
+          md:text-5xl
+          lg:text-6xl
+          xl:text-[4rem]
+        "
       >
-
         Let&apos;s Build Something
 
         <br />
@@ -4998,11 +5036,13 @@ useEffect(() => {
         className="
           mx-auto
           mt-6
+          w-full
           max-w-2xl
+          px-2
           text-sm
           leading-7
           text-stone-400
-          
+
           sm:text-[1.25rem]
           sm:leading-8
         "
@@ -5021,14 +5061,20 @@ useEffect(() => {
 
     <div
       className="
-        mt-14
+        mt-10
         grid
         w-full
+        min-w-0
+        max-w-full
+        grid-cols-1
         items-stretch
-        gap-6
+        gap-5
+
+        sm:mt-12
+        sm:gap-6
 
         lg:mt-20
-        lg:grid-cols-[0.95fr_1.05fr]
+        lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]
 
         xl:gap-8
       "
@@ -5045,12 +5091,14 @@ useEffect(() => {
           group
           relative
           w-full
+          min-w-0
+          max-w-full
           overflow-hidden
-          rounded-[2rem]
+          rounded-[1.75rem]
           border
           border-orange-500/20
           bg-[#110C09]
-          p-4
+          p-3
           shadow-[0_25px_90px_rgba(0,0,0,0.35)]
 
           sm:p-5
@@ -5078,18 +5126,22 @@ useEffect(() => {
             z-20
             mb-4
             inline-flex
+            max-w-full
             rounded-full
             border
             border-white/10
             bg-black/40
             px-3
             py-1.5
-            text-[20px]
+            text-[15px]
             font-bold
             uppercase
-            tracking-[0.2em]
+            tracking-[0.16em]
             text-orange-300
             backdrop-blur-md
+
+            sm:text-[20px]
+            sm:tracking-[0.2em]
           "
         >
           LET&apos;S CONNECT
@@ -5105,8 +5157,10 @@ useEffect(() => {
             relative
             z-10
             flex
-            h-[300px]
+            h-[230px]
+            min-h-0
             w-full
+            max-w-full
             items-end
             justify-center
             overflow-hidden
@@ -5115,8 +5169,10 @@ useEffect(() => {
             border-orange-500/10
             bg-black
 
-            sm:h-[360px]
-            md:h-[400px]
+            min-[400px]:h-[250px]
+
+            sm:h-[340px]
+            md:h-[390px]
             lg:h-[430px]
           "
         >
@@ -5138,6 +5194,7 @@ useEffect(() => {
               z-10
               h-full
               w-full
+              min-w-0
               object-contain
               object-bottom
               transition-transform
@@ -5156,11 +5213,13 @@ useEffect(() => {
               inset-x-0
               bottom-0
               z-20
-              h-28
+              h-20
               bg-gradient-to-t
               from-[#110C09]
               via-[#110C09]/50
               to-transparent
+
+              sm:h-28
             "
           />
 
@@ -5176,6 +5235,7 @@ useEffect(() => {
             relative
             z-20
             mt-5
+            min-w-0
             px-1
           "
         >
@@ -5198,6 +5258,7 @@ useEffect(() => {
               text-lg
               font-black
               text-white
+
               sm:text-xl
             "
           >
@@ -5217,10 +5278,14 @@ useEffect(() => {
             z-20
             mt-6
             grid
+            w-full
+            min-w-0
+            max-w-full
             grid-cols-1
-            gap-3
+            gap-2.5
 
             sm:grid-cols-2
+            sm:gap-3
           "
         >
 
@@ -5234,14 +5299,17 @@ useEffect(() => {
             className="
               group/contact
               flex
+              w-full
               min-w-0
+              max-w-full
               items-center
               gap-3
+              overflow-hidden
               rounded-2xl
               border
               border-white/10
               bg-white/[0.025]
-              p-4
+              p-3.5
               transition-all
               duration-300
 
@@ -5283,7 +5351,6 @@ useEffect(() => {
                 strokeWidth="1.8"
                 className="h-5 w-5"
               >
-
                 <rect
                   width="20"
                   height="16"
@@ -5295,18 +5362,40 @@ useEffect(() => {
                 <path
                   d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
                 />
-
               </svg>
 
             </div>
 
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
 
-              <p className="text-[15px] font-black uppercase tracking-[0.2em] text-stone-500">
+              <p
+                className="
+                  text-[13px]
+                  font-black
+                  uppercase
+                  tracking-[0.18em]
+                  text-stone-500
+
+                  sm:text-[15px]
+                  sm:tracking-[0.2em]
+                "
+              >
                 GMAIL
               </p>
 
-              <p className="mt-1 truncate text-xs font-bold text-stone-200 transition-colors group-hover/contact:text-orange-300 sm:text-sm">
+              <p
+                className="
+                  mt-1
+                  truncate
+                  text-[11px]
+                  font-bold
+                  text-stone-200
+                  transition-colors
+                  group-hover/contact:text-orange-300
+
+                  sm:text-sm
+                "
+              >
                 chchandra614@gmail.com
               </p>
 
@@ -5324,14 +5413,17 @@ useEffect(() => {
             className="
               group/contact
               flex
+              w-full
               min-w-0
+              max-w-full
               items-center
               gap-3
+              overflow-hidden
               rounded-2xl
               border
               border-white/10
               bg-white/[0.025]
-              p-4
+              p-3.5
               transition-all
               duration-300
 
@@ -5373,7 +5465,6 @@ useEffect(() => {
                 strokeWidth="1.8"
                 className="h-5 w-5"
               >
-
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -5390,18 +5481,40 @@ useEffect(() => {
                   12.84 12.84 0 0 0 2.81.7
                   A2 2 0 0 1 22 16.92z"
                 />
-
               </svg>
 
             </div>
 
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
 
-              <p className="text-[15px] font-black uppercase tracking-[0.2em] text-stone-500">
+              <p
+                className="
+                  text-[13px]
+                  font-black
+                  uppercase
+                  tracking-[0.18em]
+                  text-stone-500
+
+                  sm:text-[15px]
+                  sm:tracking-[0.2em]
+                "
+              >
                 PHONE
               </p>
 
-              <p className="mt-1 text-sm font-bold text-stone-200 transition-colors group-hover/contact:text-orange-300">
+              <p
+                className="
+                  mt-1
+                  truncate
+                  text-xs
+                  font-bold
+                  text-stone-200
+                  transition-colors
+                  group-hover/contact:text-orange-300
+
+                  sm:text-sm
+                "
+              >
                 +91 93902 48043
               </p>
 
@@ -5421,14 +5534,17 @@ useEffect(() => {
             className="
               group/contact
               flex
+              w-full
               min-w-0
+              max-w-full
               items-center
               gap-3
+              overflow-hidden
               rounded-2xl
               border
               border-white/10
               bg-white/[0.025]
-              p-4
+              p-3.5
               transition-all
               duration-300
 
@@ -5466,13 +5582,36 @@ useEffect(() => {
               in
             </div>
 
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
 
-              <p className="text-[15px] font-black uppercase tracking-[0.2em] text-stone-500">
+              <p
+                className="
+                  text-[13px]
+                  font-black
+                  uppercase
+                  tracking-[0.18em]
+                  text-stone-500
+
+                  sm:text-[15px]
+                  sm:tracking-[0.2em]
+                "
+              >
                 LINKEDIN
               </p>
 
-              <p className="mt-1 text-sm font-bold text-stone-200 transition-colors group-hover/contact:text-orange-300">
+              <p
+                className="
+                  mt-1
+                  truncate
+                  text-xs
+                  font-bold
+                  text-stone-200
+                  transition-colors
+                  group-hover/contact:text-orange-300
+
+                  sm:text-sm
+                "
+              >
                 Connect with me
               </p>
 
@@ -5492,14 +5631,17 @@ useEffect(() => {
             className="
               group/contact
               flex
+              w-full
               min-w-0
+              max-w-full
               items-center
               gap-3
+              overflow-hidden
               rounded-2xl
               border
               border-white/10
               bg-white/[0.025]
-              p-4
+              p-3.5
               transition-all
               duration-300
 
@@ -5565,13 +5707,36 @@ useEffect(() => {
 
             </div>
 
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
 
-              <p className="text-[15px] font-black uppercase tracking-[0.2em] text-stone-500">
+              <p
+                className="
+                  text-[13px]
+                  font-black
+                  uppercase
+                  tracking-[0.18em]
+                  text-stone-500
+
+                  sm:text-[15px]
+                  sm:tracking-[0.2em]
+                "
+              >
                 INSTAGRAM
               </p>
 
-              <p className="mt-1 text-sm font-bold text-stone-200 transition-colors group-hover/contact:text-orange-300">
+              <p
+                className="
+                  mt-1
+                  truncate
+                  text-xs
+                  font-bold
+                  text-stone-200
+                  transition-colors
+                  group-hover/contact:text-orange-300
+
+                  sm:text-sm
+                "
+              >
                 Follow me
               </p>
 
@@ -5591,29 +5756,33 @@ useEffect(() => {
       <motion.div
         variants={childReveal}
         className="
-          rounded-[2rem]
+          w-full
+          min-w-0
+          max-w-full
+          overflow-hidden
+          rounded-[1.75rem]
           border
           border-orange-500/20
           bg-[#110C09]
-          p-6
+          p-4
           shadow-[0_25px_90px_rgba(0,0,0,0.3)]
 
-          sm:p-8
+          sm:p-6
           lg:p-10
         "
       >
 
         {/* Form heading */}
 
-        <div className="mb-8">
+        <div className="mb-7 min-w-0 sm:mb-8">
 
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
 
             <div
               className="
                 flex
-                h-15
-                w-15
+                h-12
+                w-12
                 shrink-0
                 items-center
                 justify-center
@@ -5623,24 +5792,51 @@ useEffect(() => {
                 bg-orange-500/10
                 text-lg
                 text-orange-400
+
+                sm:h-15
+                sm:w-15
               "
             >
               ↗
             </div>
 
-            <div>
+            <div className="min-w-0">
 
-              <p className="text-[20px] font-black uppercase tracking-[0.25em] text-orange-400">
+              <p
+                className="
+                  min-w-0
+                  break-words
+                  text-[14px]
+                  font-black
+                  uppercase
+                  leading-6
+                  tracking-[0.18em]
+                  text-orange-400
+
+                  sm:text-[18px]
+                  sm:tracking-[0.22em]
+                "
+              >
                 START A CONVERSATION
               </p>
-
-          
 
             </div>
 
           </div>
 
-          <p className="mt-5 max-w-lg text-base leading-7 text-stone-400">
+          <p
+            className="
+              mt-5
+              w-full
+              max-w-lg
+              text-sm
+              leading-6
+              text-stone-400
+
+              sm:text-base
+              sm:leading-7
+            "
+          >
             Send me your project details and I&apos;ll get back
             to you as soon as possible.
           </p>
@@ -5655,27 +5851,43 @@ useEffect(() => {
         <form
           ref={contactForm}
           onSubmit={sendContactEmail}
-          className="space-y-5"
+          className="
+            w-full
+            min-w-0
+            max-w-full
+            space-y-5
+          "
         >
 
           {/* NAME + EMAIL */}
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div
+            className="
+              grid
+              w-full
+              min-w-0
+              gap-5
+
+              sm:grid-cols-2
+            "
+          >
 
             {/* NAME */}
 
-            <div>
+            <div className="min-w-0">
 
               <label
                 htmlFor="contact-name"
                 className="
                   mb-2
                   block
-                  text-[15px]
+                  text-[13px]
                   font-bold
                   uppercase
                   tracking-wider
                   text-stone-400
+
+                  sm:text-[15px]
                 "
               >
                 Your Name
@@ -5688,7 +5900,10 @@ useEffect(() => {
                 required
                 placeholder="Enter your name"
                 className="
+                  block
                   w-full
+                  min-w-0
+                  max-w-full
                   rounded-xl
                   border
                   border-white/10
@@ -5713,18 +5928,20 @@ useEffect(() => {
 
             {/* EMAIL */}
 
-            <div>
+            <div className="min-w-0">
 
               <label
                 htmlFor="contact-email"
                 className="
                   mb-2
                   block
-                  text-[15px]
+                  text-[13px]
                   font-bold
                   uppercase
                   tracking-wider
                   text-stone-400
+
+                  sm:text-[15px]
                 "
               >
                 Your Email
@@ -5737,7 +5954,10 @@ useEffect(() => {
                 required
                 placeholder="you@example.com"
                 className="
+                  block
                   w-full
+                  min-w-0
+                  max-w-full
                   rounded-xl
                   border
                   border-white/10
@@ -5764,18 +5984,20 @@ useEffect(() => {
 
           {/* SUBJECT */}
 
-          <div>
+          <div className="min-w-0">
 
             <label
               htmlFor="contact-subject"
               className="
                 mb-2
                 block
-                text-[15px]
+                text-[13px]
                 font-bold
                 uppercase
                 tracking-wider
                 text-stone-400
+
+                sm:text-[15px]
               "
             >
               Subject
@@ -5788,7 +6010,10 @@ useEffect(() => {
               required
               placeholder="Project discussion"
               className="
+                block
                 w-full
+                min-w-0
+                max-w-full
                 rounded-xl
                 border
                 border-white/10
@@ -5813,18 +6038,20 @@ useEffect(() => {
 
           {/* MESSAGE */}
 
-          <div>
+          <div className="min-w-0">
 
             <label
               htmlFor="contact-message"
               className="
                 mb-2
                 block
-                text-[15px]
+                text-[13px]
                 font-bold
                 uppercase
                 tracking-wider
                 text-stone-400
+
+                sm:text-[15px]
               "
             >
               Your Message
@@ -5837,7 +6064,10 @@ useEffect(() => {
               rows={6}
               placeholder="Tell me about your project..."
               className="
+                block
                 w-full
+                min-w-0
+                max-w-full
                 resize-none
                 rounded-xl
                 border
@@ -5895,7 +6125,7 @@ useEffect(() => {
                 px-4
                 py-3
                 text-center
-                text-lg
+                text-sm
                 font-bold
                 text-red-400
               "
@@ -5916,13 +6146,14 @@ useEffect(() => {
               group
               flex
               w-full
+              min-w-0
               items-center
               justify-center
               gap-3
               rounded-xl
-              px-6
+              px-5
               py-4
-              text-lg
+              text-base
               font-black
               text-white
               transition-all
@@ -5937,6 +6168,8 @@ useEffect(() => {
                   ? "bg-red-600 hover:bg-red-700"
                   : "bg-orange-500 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-[0_18px_45px_rgba(249,115,22,0.38)]"
               }
+
+              sm:text-lg
             `}
           >
 
@@ -5967,8 +6200,6 @@ useEffect(() => {
             ) : (
               <>
                 Send Message
-
-                
               </>
             )}
 
@@ -5996,13 +6227,7 @@ useEffect(() => {
 
     </div>
 
-
-   
-
   </div>
-
-
-  
 
 </Section>
 {/* =====================================================
@@ -6274,7 +6499,7 @@ useEffect(() => {
 
           {/* GitHub */}
           <a
-            href="https://github.com/Chckiran01"
+            href="https://github.com/chckiran07"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -6668,46 +6893,61 @@ useEffect(() => {
     ===================================================== */}
 
     <div
-      className="
-        mt-10
-        flex
-        flex-col
-        gap-3
-        border-t
-        border-white/10
-        pt-5
-        sm:flex-row
-        sm:items-center
-        sm:justify-between
-      "
-    >
+  className="
+    mt-10
+    flex
+    flex-col
+    items-center
+    justify-center
+    gap-4
+    border-t
+    border-white/10
+    pt-5
+    pb-5
+    text-center
+    sm:flex-row
+    sm:items-center
+    sm:justify-between
+    sm:text-left
+  "
+>
       <p
-        className="
-          text-[15px]
-          font-medium
-          uppercase
-          tracking-[0.15em]
-          text-stone-600
-        "
-      >
-        © {new Date().getFullYear()} Chandra Kiran. All rights reserved.
-      </p>
+  className="
+    w-full
+    text-center
+    text-[13px]
+    font-medium
+    uppercase
+    leading-6
+    tracking-[0.12em]
+    text-stone-600
+    sm:w-auto
+    sm:text-left
+    sm:text-[15px]
+    sm:tracking-[0.15em]
+  "
+>
+  © {new Date().getFullYear()} Chandra Kiran. All rights reserved.
+</p>
 
       <a
-        href="#home"
-        className="
-          w-fit
-          text-[15px]
-          font-bold
-          uppercase
-          tracking-wider
-          text-stone-600
-          transition-colors
-          hover:text-orange-400
-        "
-      >
-        Back to Top ↑
-      </a>
+  href="#home"
+  className="
+    w-full
+    text-center
+    text-[13px]
+    font-bold
+    uppercase
+    tracking-wider
+    text-stone-600
+    transition-colors
+    hover:text-orange-400
+    sm:w-auto
+    sm:text-[15px]
+  "
+>
+  Back to Top ↑
+</a>
     </div>
   </div>
 </footer>
